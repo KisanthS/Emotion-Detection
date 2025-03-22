@@ -1,0 +1,10 @@
+tensorflow
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+streamlit
+nltk
+requests
+python-dotenv
