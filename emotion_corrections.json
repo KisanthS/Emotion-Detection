@@ -1,1 +1,8 @@
-{"sad": "sadness", "wow": "surprise"}
+{"sad": "sadness", "wow": "surprise",
+  "joy": "happiness, cheer, delight, pleasure, fun, excitement, gladness",
+  "surprise": "shock, amazement, wonder, astonishment, disbelief, curiosity",
+  "fear": "worry, anxiety, nervousness, panic, dread, hesitation, unease",
+  "anger": "annoyance, frustration, irritation, rage, resentment, agitation",
+  "love": "care, affection, fondness, warmth, devotion, attachment, admiration",
+  "sadness": "upset, gloom, unhappiness, disappointment, grief, melancholy"
+}
