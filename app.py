@@ -13,6 +13,11 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from dotenv import load_dotenv
 
+# Load secrets from Streamlit's secrets manager
+import streamlit as st
+CLIENT_ID = st.secrets["SPOTIFY_CLIENT_ID"]
+CLIENT_SECRET = st.secrets["SPOTIFY_CLIENT_SECRET"]
+
 # Load environment variables from .env file
 load_dotenv()
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
