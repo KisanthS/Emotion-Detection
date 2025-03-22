@@ -9,18 +9,18 @@ import json
 import requests
 import base64
 import re
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from dotenv import load_dotenv
 
-import nltk
-nltk.download('stopwords')  # Download stopwords dataset
-from nltk.corpus import stopwords
+# Download stopwords if not available
+nltk.download('stopwords')
+
 
 # Load secrets from Streamlit's secrets manager
 CLIENT_ID = st.secrets["SPOTIFY_CLIENT_ID"]
 CLIENT_SECRET = st.secrets["SPOTIFY_CLIENT_SECRET"]
-
 # Load environment variables from .env file
 load_dotenv()
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
@@ -121,20 +121,15 @@ def search_spotify_track(emotion):
 # Set Streamlit page layout
 st.set_page_config(page_title="Emotion Detector 🎭", layout="centered")
 
-# Apply Background Image
-background_image_url = "https://wallpapers.com/images/featured/dark-5u7v1sbwoi6hdzsb.jpg"
+# Add background image
+bg_image_url = "https://wallpapers.com/images/featured/dark-5u7v1sbwoi6hdzsb.jpg"
 st.markdown(
     f"""
     <style>
-        body {{
-            background: url("{background_image_url}") no-repeat center center fixed;
-            background-size: cover;
-        }}
-        .stApp {{
-            background-color: rgba(0, 0, 0, 0.5);  /* Adds a dark overlay for readability */
-            padding: 20px;
-            border-radius: 10px;
-        }}
+    .stApp {{
+        background: url("{bg_image_url}") no-repeat center center fixed;
+        background-size: cover;
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -143,10 +138,12 @@ st.markdown(
 # Page Header
 st.markdown("<h2 style='text-align: center; color: #ff4b4b;'>🎭 Emotion Detection App 🎭</h2>", unsafe_allow_html=True)
 
-# User Input
-user_text = st.text_input("📝 Enter your sentence:", max_chars=100)
+# Create a form to allow both Enter key and button press
+with st.form(key="emotion_form"):
+    user_text = st.text_input("📝 Enter your sentence:", max_chars=100)
+    submit_button = st.form_submit_button("➡️")  # Arrow button
 
-if user_text:
+if user_text and submit_button:
     predicted_emotion = correct_emotion(user_text)
 
     # Display Predicted Emotion
@@ -169,7 +166,7 @@ if user_text:
             f"<p style='text-align: center;'><strong>{track['name']}</strong> by {track['artist']}</p>",
             unsafe_allow_html=True
         )
-        
+
         # Embed Spotify Player
         embed_url = f"https://open.spotify.com/embed/track/{track['id']}?utm_source=generator"
         st.markdown(
