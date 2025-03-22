@@ -13,6 +13,10 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from dotenv import load_dotenv
 
+import nltk
+nltk.download('stopwords')  # Download stopwords dataset
+from nltk.corpus import stopwords
+
 # Load secrets from Streamlit's secrets manager
 CLIENT_ID = st.secrets["SPOTIFY_CLIENT_ID"]
 CLIENT_SECRET = st.secrets["SPOTIFY_CLIENT_SECRET"]
