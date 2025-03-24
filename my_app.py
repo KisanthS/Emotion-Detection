@@ -17,9 +17,6 @@ from dotenv import load_dotenv
 # Download stopwords if not available
 nltk.download('stopwords')
 
-CLIENT_ID = st.secrets["SPOTIFY_CLIENT_ID"]
-CLIENT_SECRET = st.secrets["SPOTIFY_CLIENT_SECRET"]
-
 # Load environment variables from .env file
 load_dotenv()
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
@@ -96,11 +93,11 @@ def get_access_token():
     response = requests.post(url, headers=headers, data=data)
     return response.json().get('access_token')
 
-# Function to fetch Tamil songs based on emotion
+# Function to fetch 5 Tamil songs based on emotion
 def search_spotify_track(emotion):
     access_token = get_access_token()
     query = f"{emotion} tamil"  # Adding "tamil" to filter Tamil songs
-    url = f'https://api.spotify.com/v1/search?q={query}&type=track&limit=3'
+    url = f'https://api.spotify.com/v1/search?q={query}&type=track&limit=5'  # Fetching 5 songs
     headers = {'Authorization': f'Bearer {access_token}'}
     response = requests.get(url, headers=headers)
     tracks = response.json().get('tracks', {}).get('items', [])
