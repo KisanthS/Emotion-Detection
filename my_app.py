@@ -20,7 +20,6 @@ nltk.download('stopwords')
 CLIENT_ID = st.secrets["SPOTIFY_CLIENT_ID"]
 CLIENT_SECRET = st.secrets["SPOTIFY_CLIENT_SECRET"]
 
-
 # Load environment variables from .env file
 load_dotenv()
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
