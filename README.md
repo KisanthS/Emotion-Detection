@@ -1,6 +1,6 @@
 # 🎭Emotion Detection App🎭
 
-🔗 **Visit the Live App:** <a href="https://kisanths-emotion-detection.streamlit.app/" target="_blank">https://kisanths-emotion-detection.streamlit.app/</a>
+🔗 **Visit the Live App:** [https://kisanths-emotion-detection.streamlit.app/](https://kisanths-emotion-detection.streamlit.app/)
 
 ---
 
